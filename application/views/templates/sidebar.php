@@ -48,7 +48,7 @@
              <?php if ($title == $sm['title']) : ?>
                  <li class="nav-item active">
                  <?php else : ?>
-                 <li class="nav-item">
+                 <li class="nav-item ">
                  <?php endif; ?>
                  <a class="nav-link pb-0" href="<?= base_url($sm['url']);  ?>">
                      <i class="<?= $sm['icon'];  ?>"></i>

@@ -44,11 +44,14 @@
     <?php $i++;  ?>
     <?php endforeach ?>
     
+    
   </tbody>
-
+  
 
 
 </table>
+<div class="col-sm-13 text-right">
+   <a href="<?= base_url('admin/role')?>" class="btn btn-success btn-xs">Kembali</a>
  
 
 

@@ -12,12 +12,12 @@
             <div class="form-group ">
                 <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
                 <div class="col-sm-10 ">
-                    <input type="email" class="form-control" id="email" name="email" value="<?= $user['email'];?>" readonly>
+                    <input type="email" class="form-control" id="email" name="email" value="<?= htmlspecialchars($user['email']);?>" readonly>
                 </div>
                 <div class="form-group ">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Full Name</label>
                     <div class="col-sm-10 ">
-                        <input type="name" class="form-control" id="name" name="name" value="<?= $user['name'];?>">
+                        <input type="name" class="form-control" id="name" name="name" value="<?= htmlspecialchars($user['name']);?>">
                         <?= form_error('name','<small class="text-danger pl-3">','</small>')?>
                     </div>
                     <div class="form-group ">
@@ -41,13 +41,10 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-10 text-right">
+                        <a href="<?= base_url('user')?>"class="btn btn-success btn-xs">Kembali</a>
                             <button type="submit" class="btn btn-primary">Edit</button>
                         </div>
                     </div>
-
-
-
-
                     </form>
                 </div>
             </div>

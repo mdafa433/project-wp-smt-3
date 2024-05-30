@@ -13,28 +13,16 @@ class user extends CI_Controller
 	{
 		$data['title'] = 'My Profile';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('templates/topbar', $data);
 		$this->load->view('member/index', $data);
 		$this->load->view('templates/footer');
 	}
-	public function film()
-	{
-		$data['title'] = 'Daftar film';
-		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-		$this->load->view('templates/header', $data);
-		$this->load->view('templates/sidebar', $data);
-		$this->load->view('templates/topbar', $data);
-		$this->load->view('member/film', $data);
-		$this->load->view('templates/footer',);
-	}
 	public function edit()
 	{
 		$data['title'] = 'Edit Profile';
-		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$this->form_validation->set_rules('name', 'Full Name', 'required');
 
@@ -60,7 +48,7 @@ class user extends CI_Controller
 
 				if ($this->upload->do_upload('image')) {
 					$old_image = $data['user']['image'];
-					if ($old_image != 'dafault.jpg') {
+					if ($old_image != 'default.jpg') {
 						unlink(FCPATH . 'assets/img/profile/' . $old_image);
 					}
 
@@ -82,4 +70,6 @@ class user extends CI_Controller
 			redirect('user');
 		}
 	}
+
+	
 }

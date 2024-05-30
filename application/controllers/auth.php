@@ -16,9 +16,9 @@ class auth extends CI_Controller
         $this->form_validation->set_rules('email', 'Email' , 'trim|required|valid_email');
         $this->form_validation->set_rules('password', 'Password' , 'trim|required');
         
-      if($this->form_validation->run() == false) {
-        $data['title'] = 'Login';
-        $this->load->view('templates/auth_header' ,$data);
+        if($this->form_validation->run() == false)
+       {
+        $this->load->view('templates/auth_header' );
         $this->load->view('auth/login');
         $this->load->view('templates/auth_footer');
         
@@ -50,6 +50,7 @@ class auth extends CI_Controller
 
                         ];
                         $this->session->set_userdata($data);
+                        $this->session->set_flashdata('berhasil', 'Login berhasil! Selamat datang, ' . $user['name'] . '!');
                         if($user['role_id'] == 1) {
                             redirect('admin');
                         }else{
@@ -77,9 +78,9 @@ class auth extends CI_Controller
             redirect('user');
         }
 
-        $this->form_validation->set_rules('name', 'Name', 'required|trim');
+        $this->form_validation->set_rules('name', 'Name', 'trim');
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]',[
-            'is_unique' => 'email ini sudah pernah terdaftar blok'
+            'is_unique' => 'email ini sudah pernah terdaftar '
         ]);
         $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]',[
             'matches'=> 'Password dont match!',
@@ -89,7 +90,6 @@ class auth extends CI_Controller
 
 
         if ($this->form_validation->run() == false){
-            $data['title'] = 'wpu user registration'; 
             $this->load->view('templates/auth_header');
             $this->load->view('auth/registration');
             $this->load->view('templates/auth_footer');

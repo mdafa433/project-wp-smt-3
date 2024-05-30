@@ -27,15 +27,14 @@
   </thead>
   <tbody>
     <?php  $i = 1; ?>
-<?php  foreach($role as $r) : ?>
+   <?php  foreach($role as $r) : ?>
 
     <tr>
       <th scope="row"><?= $i;  ?></th>
       <td><?= $r['role'];  ?></td>
       <td>
-            <a href="<?= base_url('admin/roleaccess/') . $r['id'];  ?>"class="badge badge-warning">access</a>
-            <a href=""class="badge badge-success">edit</a>
-            <a href=""class="badge badge-danger">delete</a>
+            <a href="<?= base_url('admin/roleaccess/') . $r['id'];  ?>"class="btn btn-warning btn-xs">access</a>
+            <a href="<?= base_url('admin/edit/') . $r['id']; ?>"class="btn btn-success btn-xs">edit</a>
       </td>
       
     </tr>
